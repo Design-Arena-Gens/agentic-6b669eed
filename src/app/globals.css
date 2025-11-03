@@ -1,0 +1,135 @@
+@import "tailwindcss";
+
+/* Otlob 2026 Design Tokens */
+:root {
+  /* Base */
+  --background: #0b0b0c;
+  --foreground: #f5f6f7;
+
+  /* Brand */
+  --brand-primary: #ff5a3c;    /* warm chili */
+  --brand-primary-600: #ff3f20;
+  --brand-primary-700: #e0351b;
+  --brand-secondary: #0fb9b1;  /* fresh mint */
+  --brand-accent: #ffb703;     /* saffron */
+
+  /* Neutrals */
+  --neutral-950: #0b0b0c;
+  --neutral-900: #121214;
+  --neutral-800: #1c1c20;
+  --neutral-700: #2a2a2f;
+  --neutral-600: #3a3a41;
+  --neutral-500: #565861;
+  --neutral-400: #7b7f8a;
+  --neutral-300: #a9aebb;
+  --neutral-200: #d1d6e0;
+  --neutral-100: #e9edf3;
+  --neutral-50:  #f7f9fc;
+
+  /* Feedback */
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --error:   #ef4444;
+
+  /* Surfaces */
+  --surface: #101114;
+  --surface-elev-1: #14161a;
+  --surface-elev-2: #171a1f;
+
+  /* Shadows (elevations) */
+  --shadow-1: 0 1px 2px rgba(0,0,0,0.16), 0 1px 1px rgba(0,0,0,0.08);
+  --shadow-2: 0 4px 10px rgba(0,0,0,0.18), 0 2px 6px rgba(0,0,0,0.12);
+  --shadow-3: 0 10px 20px rgba(0,0,0,0.22), 0 6px 10px rgba(0,0,0,0.14);
+}
+
+@theme inline {
+  /* Colors */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--brand-primary);
+  --color-primary-600: var(--brand-primary-600);
+  --color-primary-700: var(--brand-primary-700);
+  --color-secondary: var(--brand-secondary);
+  --color-accent: var(--brand-accent);
+  --color-muted: var(--neutral-400);
+  --color-border: var(--neutral-700);
+  --color-surface: var(--surface);
+  --color-surface-1: var(--surface-elev-1);
+  --color-surface-2: var(--surface-elev-2);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-error: var(--error);
+
+  /* Typography */
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+
+  /* Radius */
+  --radius-xs: 0.375rem;   /* 6px */
+  --radius-sm: 0.5rem;     /* 8px */
+  --radius-md: 0.75rem;    /* 12px */
+  --radius-lg: 1rem;       /* 16px */
+  --radius-full: 999px;
+
+  /* Spacing (8?12px rhythm) */
+  --space-1: 0.25rem;  /* 4 */
+  --space-2: 0.5rem;   /* 8 */
+  --space-3: 0.75rem;  /* 12 */
+  --space-4: 1rem;     /* 16 */
+  --space-5: 1.25rem;  /* 20 */
+  --space-6: 1.5rem;   /* 24 */
+  --space-7: 1.75rem;  /* 28 */
+  --space-8: 2rem;     /* 32 */
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --background: #ffffff;
+    --foreground: #16181d;
+    --surface: #ffffff;
+    --surface-elev-1: #ffffff;
+    --surface-elev-2: #fafbfc;
+    --shadow-1: 0 1px 2px rgba(3,7,18,0.06), 0 1px 1px rgba(3,7,18,0.04);
+    --shadow-2: 0 4px 10px rgba(3,7,18,0.08), 0 2px 6px rgba(3,7,18,0.06);
+    --shadow-3: 0 10px 20px rgba(3,7,18,0.12), 0 6px 10px rgba(3,7,18,0.08);
+  }
+}
+
+/* Base */
+html, body {
+  height: 100%;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+}
+
+/* Motion utilities */
+@utility tap-active {
+  @apply active:scale-[0.98] active:opacity-95 transition-transform duration-150 ease-out;
+}
+
+@utility card {
+  @apply rounded-[--radius-lg] bg-[--color-surface] shadow-[var(--shadow-1)] ring-1 ring-[--color-border];
+}
+
+@utility chip {
+  @apply inline-flex items-center gap-2 rounded-full px-3 py-1 text-[--text-sm] bg-[--neutral-800] text-[--neutral-200] ring-1 ring-[--color-border];
+}
+
+@utility focus-ring {
+  @apply outline-none ring-2 ring-offset-2 ring-[--color-primary] ring-offset-[--color-surface] focus-visible:ring-2;
+}
+
+/* Image ratios */
+.ratio-4\/3 { aspect-ratio: 4 / 3; }
+.ratio-1\/1 { aspect-ratio: 1 / 1; }
+.ratio-16\/9 { aspect-ratio: 16 / 9; }
